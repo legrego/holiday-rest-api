@@ -1,5 +1,5 @@
 import * as express from 'express';
-import {createHolidayRoute} from '../src/routes/holidayRoute';
+import {createHolidayRoute} from '../src/v1/routes/holidayRoute';
 const request = require('supertest');
 
 describe('holidayRoute', () => {
