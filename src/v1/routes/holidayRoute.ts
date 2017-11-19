@@ -1,11 +1,11 @@
-import * as express from 'express';
-import { IHolidayQuery } from '../model/IHolidayQuery';
-const Holidays = require('date-holidays');
+import * as express from "express";
+import { IHolidayQuery } from "../model/IHolidayQuery";
+const Holidays = require("date-holidays");
 
 export function createHolidayRoute(): express.Router {
     const route = express.Router();
 
-    route.get('/', (req, res, next) => {
+    route.get("/", (req, res, next) => {
         const query = parseHolidayQueryFromRequest(req);
 
         const hd = createHolidaysObject(query);
@@ -13,13 +13,13 @@ export function createHolidayRoute(): express.Router {
         res.status(200).send(hd.getHolidays(query.year));
     });
 
-    route.get('/today', (req, res, next) => {
+    route.get("/today", (req, res, next) => {
         const query = parseHolidayQueryFromRequest(req);
 
         const hd = createHolidaysObject(query);
 
         const holiday = hd.isHoliday(new Date());
-        
+
         if (holiday) {
             res.status(200).send({
                 isHoliday: true,
@@ -29,7 +29,7 @@ export function createHolidayRoute(): express.Router {
             res.status(200).send({
                 isHoliday: false
             });
-        }        
+        }
     });
 
     return route;
@@ -45,18 +45,18 @@ function createHolidaysObject(query: IHolidayQuery) {
 }
 
 function parseHolidayQueryFromRequest(req: express.Request): IHolidayQuery {
-    const country: string = req.query.country || 'US';
-    
+    const country: string = req.query.country || "US";
+
     let state: string = req.query.state;
-    if (country === 'US' && !state) {
-        state = 'NY';
+    if (country === "US" && !state) {
+        state = "NY";
     }
 
-    const region: string = req.query.region || '';
+    const region: string = req.query.region || "";
 
-    const timezone: string = req.query.tz || 'America/New_York';
+    const timezone: string = req.query.tz || "America/New_York";
 
-    const language: string = req.query.lang || 'en-us';
+    const language: string = req.query.lang || "en-us";
 
     const year: number = parseInt(req.query.year, 10) || new Date().getFullYear();
 
@@ -67,5 +67,5 @@ function parseHolidayQueryFromRequest(req: express.Request): IHolidayQuery {
         timezone,
         language,
         year
-    };    
+    };
 }
