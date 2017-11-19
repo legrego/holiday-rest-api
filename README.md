@@ -18,7 +18,3 @@ This will build the service in the `dist` folder, which can then be run:
 `node dist/index.js`
 
 Alternatively, you can run this via the ts-node runner for rapid development: `npm run start`
-
-## Available Commands
-
-_coming soon_
