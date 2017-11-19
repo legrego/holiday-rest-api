@@ -1,5 +1,4 @@
 import * as express from "express";
-import {describe, it, expect} from "jest";
 import {createHolidayRoute} from "../src/v1/routes/holidayRoute";
 const request = require("supertest");
 

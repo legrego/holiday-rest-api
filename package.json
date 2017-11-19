@@ -6,7 +6,10 @@
   "scripts": {
     "build": "node_modules/.bin/tsc",
     "start": "node_modules/.bin/ts-node src/index.ts",
-    "test": "node_modules/.bin/jest"
+    "lint": "npm run lint:ts",
+    "lint:ts": "tslint \"./src/**/*.ts\" \"./src/**/*.tsx\"",
+    "test": "npm run lint && jest",
+    "codeclimate": "codeclimate-test-reporter < coverage/lcov.info"
   },
   "author": "Larry Gregory",
   "repository": {
@@ -24,7 +27,9 @@
     "typescript": "^2.6.1"
   },
   "devDependencies": {
+    "codeclimate-test-reporter": "^0.5.0",
     "jest": "^21.2.1",
+    "lint-staged": "3.4.0",
     "supertest": "^3.0.0",
     "ts-jest": "^21.1.4",
     "tslint": "^5.8.0"
@@ -40,6 +45,18 @@
       "js",
       "jsx",
       "json"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov",
+      "text",
+      "html"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "git add"
     ]
   }
 }

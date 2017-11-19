@@ -3,8 +3,8 @@ A simple REST API for working with national holidays.
 Part of the [DevAPIs.io](https://devapis.io) suite of free development APIs
 
 [![Build Status](https://travis-ci.org/legrego/holiday-rest-api.svg?branch=master)](https://travis-ci.org/legrego/holiday-rest-api)
-[![Code Climate](https://codeclimate.com/github/legrego/holiday-rest-api/badges/gpa.svg)](https://codeclimate.com/github/legrego/holiday-rest-api)
-[![Test Coverage](https://codeclimate.com/github/legrego/holiday-rest-api/badges/coverage.svg)](https://codeclimate.com/github/legrego/holiday-rest-api/coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8375d339aa18e29a71a4/maintainability)](https://codeclimate.com/github/legrego/holiday-rest-api/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/8375d339aa18e29a71a4/test_coverage)](https://codeclimate.com/github/legrego/holiday-rest-api/test_coverage)
 
 ## Details
 This is a REST wrapper around the excellent [`date-holidays`](https://github.com/commenthol/date-holidays) package by [commenthol](https://github.com/commenthol)
