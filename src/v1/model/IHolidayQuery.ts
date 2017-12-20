@@ -5,4 +5,5 @@ export interface IHolidayQuery {
     timezone: string;
     language: string;
     year: number;
+    force: boolean;
 }

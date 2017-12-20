@@ -42,6 +42,7 @@ paths:
         - $ref: '#/components/parameters/tz'
         - $ref: '#/components/parameters/country'
         - $ref: '#/components/parameters/state'
+        - $ref: '#/components/parameters/force'
       responses:
         success (200):
           description: Today's Holiday
@@ -55,6 +56,14 @@ paths:
     description: 'Determines if a holiday falls on the current day. If there is a holiday today, it is provided in the response'
 components:
   parameters:
+    force:
+      name: force
+      description: 'For testing purposes only; Set to true to have this return a random holiday, even if today is not a holiday'
+      in: query
+      required: false
+      example: false
+      schema:
+        type: boolean
     tz:
       name: tz
       description: 'Retrieve holidays relative to the specified timezone name'

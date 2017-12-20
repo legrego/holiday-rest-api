@@ -18,7 +18,11 @@ export function createHolidayRoute(): express.Router {
 
         const hd = createHolidaysObject(query);
 
-        const holiday = hd.isHoliday(new Date());
+        let holiday = hd.isHoliday(new Date());
+
+        if (!holiday && query.force) {
+            holiday = hd.getHolidays(query.year)[0];
+        }
 
         if (holiday) {
             res.status(200).send({
@@ -60,12 +64,15 @@ function parseHolidayQueryFromRequest(req: express.Request): IHolidayQuery {
 
     const year: number = parseInt(req.query.year, 10) || new Date().getFullYear();
 
+    const force: boolean = req.query.force || false;
+
     return {
         country,
         state,
         region,
         timezone,
         language,
-        year
+        year,
+        force
     };
 }

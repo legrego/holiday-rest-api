@@ -42,5 +42,21 @@ describe("holidayRoute", () => {
                     expect(response.body).toHaveProperty("isHoliday");
                 });
         });
+
+        it("should always indicate today is a holiday if force is enabled", () => {
+            const app = express();
+            const route = createHolidayRoute();
+            app.use("/", route);
+
+            return request(app)
+                .get("/today?force=true")
+                .expect(200)
+                .expect("Content-Type", "application/json; charset=utf-8")
+                .then(response => {
+                    expect(response.body).toHaveProperty("isHoliday");
+                    expect(response.body.isHoliday).toEqual(true);
+                    expect(response.body).toHaveProperty("holiday");
+                });
+        });
     });
 });
