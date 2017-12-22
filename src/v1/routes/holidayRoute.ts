@@ -64,7 +64,7 @@ function parseHolidayQueryFromRequest(req: express.Request): IHolidayQuery {
 
     const year: number = parseInt(req.query.year, 10) || new Date().getFullYear();
 
-    const force: boolean = req.query.force || false;
+    const force: boolean = req.query.force === "true";
 
     return {
         country,
